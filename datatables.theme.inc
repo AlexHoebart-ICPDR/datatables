@@ -144,7 +144,7 @@ use Drupal\Component\Utility\Html;
  *
  * @see template_preprocess_table()
  */
-function template_preprocess_datatable(&$variables) {
+function template_preprocess_datatable(array &$variables) {
   $header = &$variables['header'];
   $attributes = &$variables['attributes'];
 

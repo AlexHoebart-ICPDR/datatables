@@ -7,27 +7,38 @@ provides advanced interaction controls to HTML tables such as dynamic
 pagination, on-the-fly filtering, and column sorting.
 
  * For a full description of the module, visit the project page:
-   https://drupal.org/project/datatables
+   https://www.drupal.org/project/datatables
 
  * To submit bug reports and feature suggestions, or to track changes:
-   https://drupal.org/project/issues/search/datatables
+   https://www.drupal.org/project/issues/search/datatables
 
  * For full documentation and examples, visit the DataTables plugin page:
-   http://www.datatables.net
+   http://datatables.net
 
 
 INSTALLATION
 ------------
 
  * Module: Install as you would normally install a contributed Drupal module.
-   See: https://www.drupal.org/documentation/install/modules-themes/modules-8
+   See: https://www.drupal.org/docs/extending-drupal/installing-modules
    for further information.
+   Install with composer via `composer require 'drupal/datatables:^2.0'`,
+   then enable the module as usal.
 
- * Plugin: Download the latest DataTables jQuery plugin 1.9 package from
-   http://datatables.net/releases/DataTables-1.9.3.zip and and move the
-   contents of the DataTables-1.9.3 directory into the libraries/datatables
-   directory.
-
+ * Plugin: Download the latest DataTables jQuery plugin version 1.10.
+   See: https://datatables.net/download/index
+   Download with Composer via `composer require 'datatables/datatables:^1.10'`
+   and move the contents of the vendor/datatables directory into the
+   libraries/datatables directory.
+   Copy to libraries from vendor with Composer:
+   Edit the composer.json file of your website and under the "extra" entry and
+   the "installer-paths" subentry and juste after line
+            "web/libraries/{$name}": [
+   add,
+                "datatables/datatables",
+   And install mnsami/composer-custom-directory-installer via
+   `composer require 'mnsami/composer-custom-directory-installer:^2.0'`
+   From now, `composer update` command will update datatables libraries.
 
 USAGE
 -----
