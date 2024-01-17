@@ -48,6 +48,12 @@ function template_preprocess_views_view_datatables(&$variables) {
   foreach ($columns as $field => $column) {
     $column_options = NULL;
 
+    // Create a second variable so we can easily find what fields we have and
+    // what the CSS classes should be.
+    // This is handle by template_preprocess_views_view_table but it is being
+    // skipped for empty rows and the template still require the variable.
+    $vars['fields'][$field] = Html::cleanCssIdentifier($field);
+
     if (isset($options['hidden_columns'][$field])) {
       switch ($options['hidden_columns'][$field]) {
         case 'expandable':
@@ -77,7 +83,8 @@ function template_preprocess_views_view_datatables(&$variables) {
       if (empty($options['info'][$field]['sortable']) || !$fields[$field]->clickSortable()) {
         $column_options['bSortable'] = FALSE;
       }
-      else {
+      // Only try to autodetect if there are rows.
+      elseif (!empty($vars['rows'])) {
         $info = FieldStorageConfig::loadByName($fields[$field]->getEntityType(), $field);
 
         // Attempt to autodetect the type of field in order to handle sorting
