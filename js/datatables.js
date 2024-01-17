@@ -136,14 +136,14 @@
    * @return
    *   The formatted text (html).
    */
-   Drupal.theme.prototype.datatablesExpandableRow = function (datatable, row) {
+   Drupal.theme.datatablesExpandableRow = function (datatable, row) {
     var rowData = datatable.fnGetData(row);
     var settings = datatable.fnSettings();
 
     var output = '<table style="padding-left: 50px">';
     $.each(rowData, function (index) {
       if (!settings.aoColumns[index].bVisible) {
-        output += '<tr><td>' + settings.aoColumnHeaders[index] + '</td><td style="text-align: left">' + this + '</td></tr>';
+        output += '<tr><td>' + settings.aoColumnHeaders[index].content + '</td><td style="text-align: left">' + this + '</td></tr>';
       }
     });
     output += '</table>';
