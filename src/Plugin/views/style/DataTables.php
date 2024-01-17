@@ -2,7 +2,6 @@
 
 namespace Drupal\datatables\Plugin\views\style;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\style\Table;
 
@@ -213,7 +212,7 @@ class DataTables extends Table {
     foreach ($this->displayHandler->getFieldLabels() as $name => $label) {
       $form['filter_columns'][$name] = [
         '#type' => 'select',
-        '#title' => Html::escape($label),
+        '#title' => $label,
         '#options' => [
           '' => $this->t('Disabled'),
           'thead_select' => $this->t('Table Header: Select'),
@@ -228,7 +227,7 @@ class DataTables extends Table {
             ':input[name="style_options[elements][search_box]"]' => ['checked' => FALSE],
           ],
         ],
-        '#default_value' => isset($this->options['filter_columns'][$name]) ? $this->options['filter_columns'][$name] : 0,
+        '#default_value' => $this->options['filter_columns'][$name] ?? 0,
       ];
     }
 
@@ -241,13 +240,13 @@ class DataTables extends Table {
     foreach ($this->displayHandler->getFieldLabels() as $name => $label) {
       $form['hidden_columns'][$name] = [
         '#type' => 'select',
-        '#title' => Html::escape($label),
+        '#title' => $label,
         '#options' => [
           0 => $this->t('Visible'),
           'hidden' => $this->t('Hidden'),
           'expandable' => $this->t('Hidden and Expandable'),
         ],
-        '#default_value' => isset($this->options['hidden_columns'][$name]) ? $this->options['hidden_columns'][$name] : 0,
+        '#default_value' => $this->options['hidden_columns'][$name] ?? 0,
       ];
     }
   }

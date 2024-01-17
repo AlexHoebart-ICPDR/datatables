@@ -70,7 +70,7 @@ function template_preprocess_views_view_datatables(&$variables) {
 
       // Overrides clicksort head defined in
       // template_preprocess_views_view_table().
-      $variables['header'][$field]['content'] = Html::escape(!empty($fields[$field]) ? $fields[$field]->label() : '');
+      $variables['header'][$field]['content'] = !empty($fields[$field]) ? $fields[$field]->label() : '';
       unset($variables['header'][$field]['url']);
       unset($variables['header'][$field]['sort_indicator']);
 
