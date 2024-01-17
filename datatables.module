@@ -98,6 +98,8 @@ function template_preprocess_views_view_datatables(&$variables) {
 
       // Add filter column setting:
       $column_options['sFilterColumnType'] = $options['filter_columns'][$field] ?? FALSE;
+      // Boolean value. FALSE only if value is set to 'thead_unsearchable'. TRUE otherwise.
+      $column_options['bSearchable'] = 'thead_unsearchable' !== ($options['filter_columns'][$field] ?? '');
 
       $datatable_options['aoColumns'][] = $column_options;
       $datatable_options['aoColumnHeaders'][] = $variables['header'][$field];

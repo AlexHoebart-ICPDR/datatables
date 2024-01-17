@@ -217,6 +217,8 @@ class DataTables extends Table {
           '' => $this->t('Disabled'),
           'thead_select' => $this->t('Table Header: Select'),
           'thead_input' => $this->t('Table Header: Input'),
+          // Explicitly exclude the column from the global search.
+          'thead_unsearchable' => $this->t('Table Column: Unsearchable'),
           // @todo: Drupal tables typically don't have a
           // tfoot, so this doesn't work yet:
           // 'tfoot_select' => $this->t('Table Footer: Select'),
