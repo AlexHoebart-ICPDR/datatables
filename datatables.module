@@ -43,6 +43,7 @@ function template_preprocess_views_view_datatables(&$variables) {
   $fields = &$view->field;
   $columns = $handler->sanitizeColumns($options['columns'], $fields);
 
+  $datatable_options['aaSorting'] = [];
   $position = 0;
 
   foreach ($columns as $field => $column) {
@@ -113,9 +114,8 @@ function template_preprocess_views_view_datatables(&$variables) {
     }
 
     // Set default sort order.
-    $datatable_options['aaSorting'] = [];
     if ($options['default'] == $field) {
-      $datatable_options['aaSorting'] = [[$position, $options['order']]];
+      $datatable_options['aaSorting'][] = [$position, $options['order']];
     }
 
     $position++;
