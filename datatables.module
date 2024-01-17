@@ -63,7 +63,7 @@ function template_preprocess_views_view_datatables(&$variables) {
     // Render the header labels.
     if ($field == $column && empty($fields[$field]->options['exclude'])) {
       // Respect the "empty_column" option:
-      if($options['info'][$field]['empty_column'] && empty($variables['header'][$column])) {
+      if(!empty($options['info'][$field]) && $options['info'][$field]['empty_column'] && empty($variables['header'][$column])) {
         // This column is empty and was already removed. Don't do anything here.
         continue;
       }
