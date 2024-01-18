@@ -73,11 +73,10 @@ class DataTables extends Table {
     ];
 
     $options['filter_columns'] = [
-      'default' => [
-      ],
+      'default' => [],
     ];
     $options['filter_columns_placeholder'] = [
-      'default' => '- Filter -'
+      'default' => '- Filter -',
     ];
 
     return $options;
@@ -192,7 +191,10 @@ class DataTables extends Table {
       '#type' => 'details',
       '#title' => $this->t('Searchable / Filterable Columns'),
       '#open' => FALSE,
-      '#description' => $this->t('Enable search on specific columns values by <a href="@inputExampleHref" target="_blank">input</a> or <a href="@selectExampleHref" target="_blank">select</a> in the table header or footer of the selected columns. <span class="marker">Requires enabled "Search Filter Box"! To visually hide the search filter box, remove "f" from the sDOM parameter.</span>', ['@inputExampleHref' => 'https://datatables.net/examples/api/multi_filter.html', '@selectExampleHref' => 'https://datatables.net/examples/api/multi_filter_select.html']),
+      '#description' => $this->t('Enable search on specific columns values by <a href="@inputExampleHref" target="_blank">input</a> or <a href="@selectExampleHref" target="_blank">select</a> in the table header or footer of the selected columns. <span class="marker">Requires enabled "Search Filter Box"! To visually hide the search filter box, remove "f" from the sDOM parameter.</span>', [
+        '@inputExampleHref' => 'https://datatables.net/examples/api/multi_filter.html',
+        '@selectExampleHref' => 'https://datatables.net/examples/api/multi_filter_select.html',
+      ]),
     ];
 
     $form['filter_columns']['filter_columns_placeholder'] = [
@@ -219,7 +221,7 @@ class DataTables extends Table {
           'thead_input' => $this->t('Table Header: Input'),
           // Explicitly exclude the column from the global search.
           'thead_unsearchable' => $this->t('Table Column: Unsearchable'),
-          // @todo: Drupal tables typically don't have a
+          // @todo Drupal tables typically don't have a
           // tfoot, so this doesn't work yet:
           // 'tfoot_select' => $this->t('Table Footer: Select'),
           // 'tfoot_input' => $this->t('Table Footer: Input'),
@@ -254,7 +256,7 @@ class DataTables extends Table {
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function validateOptionsForm(&$form, FormStateInterface $form_state) {
     parent::validateOptionsForm($form, $form_state);
