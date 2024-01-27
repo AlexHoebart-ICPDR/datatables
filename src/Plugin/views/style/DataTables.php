@@ -49,6 +49,7 @@ class DataTables extends Table {
         'search_box' => TRUE,
         'table_info' => TRUE,
         'save_state' => FALSE,
+        'table_tools' => FALSE,
       ],
     ];
 
